@@ -1,0 +1,1658 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html
+  b:css="false"
+  b:defaultwidgetversion="2"
+  b:layoutsVersion="3"
+  b:responsive="true"
+  b:templateUrl="indie.xml"
+  b:templateVersion="1.3.0"
+  expr:lang="data:blog.locale.language"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:b="http://www.google.com/2005/gml/b"
+  xmlns:data="http://www.google.com/2005/gml/data"
+  xmlns:expr="http://www.google.com/2005/gml/expr"
+>
+  <b:attr name="xmlns" value="" />
+  <b:attr name="xmlns:b" value="" />
+  <b:attr name="xmlns:expr" value="" />
+  <b:attr name="xmlns:data" value="" />
+
+  <!--
+    Name      : Ninja Theme
+    Version   : 0.0.1
+    Date      : 01 jan 2024
+    Type      : Free and Premium
+    Designer  : NOS CREATOR 
+    Website   : www.nexoscreator.pro
+
+    ============================================================================
+    NOTE :
+    This theme is premium (free or paid).
+    You can only get it by purchasing officially.
+    If you get it for free through any method, that means you get it illegally.
+    ============================================================================
+-->
+
+  <!--[ <head> Open ]-->
+  &lt;head&gt;
+
+  <!--[ Meta for browser ]-->
+  <meta charset="UTF-8" />
+  <meta
+    content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5"
+    name="viewport"
+  />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="max-image-preview:large" name="robots" />
+
+  <b:if cond="data:view.isMultipleItems">
+    <b:if cond="data:view.isHomepage">
+      <!--[ Homepage title ]-->
+      <title><data:blog.title.escaped/></title>
+      <b:elseif cond="data:view.search.query" />
+      <!--[ Search title ]-->
+      <title><data:messages.search/>: <data:view.search.query/></title>
+      <b:elseif cond="data:view.search.label" />
+      <!--[ Label title ]-->
+      <title><data:blog.pageName.escaped/> - <data:blog.title.escaped/></title>
+      <b:elseif cond="data:view.isArchive" />
+      <!--[ Archive title ]-->
+      <title>Blog archive in: <data:blog.pageName.escaped/></title>
+      <b:else />
+      <title>Blog: <data:blog.title.escaped/></title>
+    </b:if>
+    <b:elseif cond="data:view.isError" />
+    <!--[ Error title ]-->
+    <title>Error 404: Not Found</title>
+    <b:else />
+    <!--[ SingleItem title ]-->
+    <title><data:blog.pageName.escaped/> - <data:blog.title.escaped/></title>
+  </b:if>
+
+  <b:if cond="!data:view.isError">
+    <!--[ Browser data, description and keyword ]-->
+    <b:if cond="data:blog.metaDescription">
+      <meta
+        expr:content="data:blog.metaDescription.escaped"
+        name="description"
+      />
+      <b:elseif cond="data:view.isSingleItem" />
+      <meta
+        expr:content="data:post.snippet.escaped snippet { length: 147, links: false, linebreaks: false, ellipsis: false }"
+        name="description"
+      />
+      <b:else />
+      <meta
+        expr:content="data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title"
+        name="description"
+      />
+    </b:if>
+    <meta
+      expr:content='data:blog.title.escaped + ", " + data:blog.pageName.escaped + ", os development, Programming, Coding, Web Development, Operating System, os macker, NOS STUDIO "'
+      name="keywords"
+    />
+    <b:tag
+      cond="data:view.isPost"
+      expr:href="resizeImage(data:blog.postImageUrl, 0)"
+      name="link"
+      rel="image_src"
+    />
+    <b:tag
+      cond="data:view.isHomepage"
+      href="https://raw.githubusercontent.com/noscreator/cdn-web/main/img/main/Introduction_20231023_172120_0000.webp"
+      name="link"
+      rel="image_src"
+    />
+    <meta content="NOS CREATOR" name="author" />
+
+    <!--[ Generator and rrs ]-->
+    <meta content="blogger" name="generator" />
+    <link
+      expr:href='data:blog.homepageUrl.canonical + "feeds/posts/default"'
+      expr:title='data:blog.title + " - Atom"'
+      rel="alternate"
+      type="application/atom+xml"
+    />
+    <link
+      expr:href='data:blog.homepageUrl.canonical + "feeds/posts/default?alt=rss"'
+      expr:title='data:blog.title + " - Feed"'
+      rel="alternate"
+      type="application/rss+xml"
+    />
+    <link
+      expr:href='data:blog.homepageUrl.canonical + "feeds/comments/default?alt=rss"'
+      expr:title='data:blog.title + " - Comments Feed"'
+      rel="alternate"
+      type="application/rss+xml"
+    />
+
+    <!--[ Theme Color ]-->
+    <meta expr:content="data:skin.vars.themeColor" name="theme-color" />
+    <meta
+      expr:content="data:skin.vars.themeColor"
+      name="msapplication-navbutton-color"
+    />
+    <meta
+      expr:content="data:skin.vars.themeColor"
+      name="apple-mobile-web-app-status-bar-style"
+    />
+    <meta expr:content="yes" name="apple-mobile-web-app-capable" />
+
+    <!--[ Favicon ]-->
+    <link
+      expr:href="data:blog.blogspotFaviconUrl"
+      rel="apple-touch-icon"
+      sizes="120x120"
+    />
+    <link
+      expr:href="data:blog.blogspotFaviconUrl"
+      rel="apple-touch-icon"
+      sizes="152x152"
+    />
+    <link
+      expr:href="data:blog.blogspotFaviconUrl"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link
+      expr:href="data:blog.blogspotFaviconUrl"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+
+    <!--[ Link Canonical ]-->
+    <link expr:href="data:blog.url.canonical" rel="canonical" />
+    <!--<b:if cond='data:view.url == data:view.url params { amp: &quot;1&quot; }'>
+    <link expr:href='data:view.url' rel='alternate'/>
+    <b:else/>
+    <link expr:href='data:view.url + &quot;?m=1&quot;' rel='alternate'/>
+    <link expr:href='data:view.url params { amp: &quot;1&quot; }' rel='amphtml'/>
+</b:if>-->
+
+    <!--[ Open Graph and Twitter Tags ]-->
+    <meta
+      expr:content="data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title.escaped"
+      property="og:title"
+    />
+    <meta expr:content="data:blog.canonicalUrl" property="og:url" />
+    <meta expr:content="data:blog.title.escaped" property="og:site_name" />
+    <b:if cond="data:view.isMultipleItems">
+      <meta content="website" property="og:type" />
+      <b:if cond="data:blog.metaDescription">
+        <meta
+          expr:content="data:blog.metaDescription.escaped"
+          property="og:description"
+        />
+        <b:else />
+        <meta
+          expr:content="data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title"
+          property="og:description"
+        />
+      </b:if>
+      <b:else />
+      <meta content="article" property="og:type" />
+      <b:if cond="data:blog.metaDescription">
+        <meta
+          expr:content="data:blog.metaDescription.escaped"
+          property="og:description"
+        />
+        <b:else />
+        <meta
+          expr:content="data:post.snippet.escaped snippet { length: 147, links: false, linebreaks: false, ellipsis: false }"
+          property="og:description"
+        />
+      </b:if>
+    </b:if>
+    <meta
+      expr:content="data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title.escaped"
+      property="og:image:alt"
+    />
+    <b:if cond="data:blog.postImageUrl">
+      <meta
+        expr:content="resizeImage(data:blog.postImageUrl, 0)"
+        property="og:image"
+      />
+      <b:else />
+      <meta
+        content="https://raw.githubusercontent.com/noscreator/cdn-web/main/img/main/Introduction_20231023_172120_0000.webp"
+        property="og:image"
+      />
+    </b:if>
+
+    <!--[ Site Verification ]-->
+    <!--<meta content='' name='msvalidate.01'/>
+    <meta content='' name='copyright'/>-->
+
+    <!-- Preconnect and DNS Prefetch -->
+    <!-- Blogger and Google Services -->
+    <link href="//www.blogger.com" rel="dns-prefetch" />
+    <link href="//www.gstatic.com" rel="dns-prefetch" />
+    <link href="//blogger.googleusercontent.com" rel="dns-prefetch" />
+    <link
+      expr:href='data:blog.homepageUrl.canonical path "feeds/comments/default"'
+      rel="preconnect"
+    />
+    <link
+      expr:href='data:blog.homepageUrl.canonical path "feeds/comments/default"'
+      rel="dns-prefetch"
+    />
+    <link
+      expr:href='data:blog.homepageUrl.canonical path "feeds/posts/default"'
+      rel="preconnect"
+    />
+    <link
+      expr:href='data:blog.homepageUrl.canonical path "feeds/posts/default"'
+      rel="dns-prefetch"
+    />
+    <link href="//themes.googleusercontent.com " rel="dns-prefetch" />
+    <!-- YouTube -->
+    <link href="//www.youtube.com" rel="dns-prefetch" />
+    <link href="//img.youtube.com" rel="dns-prefetch" />
+    <!-- jsDelivr -->
+    <link href="https://cdn.jsdelivr.net" rel="preconnect" />
+    <link href="https://cdn.jsdelivr.net" rel="dns-prefetch" />
+  </b:if>
+  <b:if cond="data:view.isLayoutMode">
+    <!--[ CSS Layout ]-->
+    <b:template-skin
+      ><![CDATA[ body#layout::before{content:'Gx Ui Theme 1.2 Updated(Jan 01,
+      2024) by
+      noscreator.com';position:absolute;top:15px;right:15px;font-size:.8rem;font-family:Roboto,
+      sans-serif;color:rgba(0,0,0,0.52)} body#layout{width:1025px;margin:0
+      !important;padding:60px 0 0 !important;border:0 !important;text-align:left
+      !important;position:relative} body#layout
+      div.layout-widget-description{font-size:12px !important;line-height:1.6em}
+      body#layout div.layout-title{font-size:15px !important} body#layout
+      div.section{border-radius:2px} body#layout .section h4{font-size:15px
+      !important;margin-left:0!important} body#layout .add_widget
+      a{font-size:13px !important} body#layout .Blog
+      .widget-content{height:auto!important} body#layout #anchor-ad, body#layout
+      #notif-widget .widget-content, body#layout #side-sticky, body#layout
+      #HTML91 .widget-content, body#layout #HTML92 .widget-content, body#layout
+      #HTML93 .widget-content, body#layout #HTML01 .widget-content, body#layout
+      #HTML02 .widget-content, body#layout #HTML94
+      .widget-content{background:#f0f8ff !important} body#layout
+      .mainIn{padding-bottom:30px} body#layout .headIn, body#layout .blogM,
+      body#layout .fotIn{display:flex} body#layout .headL{width:30%} body#layout
+      .headR, body#layout .headM{width:35%} body#layout .mainbar{width:55%}
+      body#layout .sidebar{width:45%} body#layout header, body#layout .mainIn,
+      body#layout footer, body#layout .erroP{border-top:1px solid
+      #e5e5e5;padding:30px 0 30px;position:relative} body#layout header::before,
+      body#layout .mainIn::before, body#layout footer::before, body#layout
+      .erroP::before{content:'Header';position:absolute;top:-14px;left:20px;padding:5px
+      20px;border:1px solid
+      #e5e5e5;border-radius:20px;font-size:.8rem;font-family:Roboto,sans-serif;color:rgba(0,0,0,0.52);background:#f1f1f1}
+      body#layout #notif-widget{padding:0!important;
+      margin-bottom:30px!important} body#layout #notif-widget
+      .widget{margin-top:0!important} body#layout #notif-widget h4, body#layout
+      #notif-widget .layout-widget-description{display:none !important}
+      body#layout .mainIn, body#layout .erroP{margin-top:40px;padding-bottom:0}
+      body#layout .mainIn::before{content:'Main Content'} body#layout
+      footer::before{content:'Footer'} body#layout
+      .erroP::before{content:'Custom Error Page'} ]]></b:template-skin
+    >
+  </b:if>
+  <!--[ CSS stylesheet ]-->
+  &lt;style&gt;&lt;!-- /*
+  <b:skin version="1.3.0"
+    ><![CDATA[ /* <Group description="(Do not edit) New Blogger comment
+    required"> <Variable name="body.background" description="Background"
+    color="#505050" type="background" default="$(color) none repeat scroll
+    center center" value="$(color) url() no-repeat scroll center center"/>
+    <Variable name="body.text.font" description="Font Blogger comment"
+    type="font" default="&#39;Roboto&#39;, sans-serif" value="400 14px
+    &#39;Roboto&#39;, sans-serif"/> <Variable name="body.text.color"
+    description="Color" type="color" default="#505050" value="#505050"/>
+    <Variable name="body.link.color" description="Link color" type="color"
+    default="#262d3d" value="#262d3d"/> <Variable name="posts.title.color"
+    description="Post title color" type="color" default="#262d3d"
+    value="#262d3d"/> <Variable name="posts.text.color" description="Post text
+    color" type="color" default="#48525c" value="#48525c"/> <Variable
+    name="posts.icons.color" description="Post info color" type="color"
+    default="#262d3d" value="#48525c"/> <Variable name="posts.background.color"
+    description="Post background color" type="color" default="#f7f7fc"
+    value="transparent"/> <Variable name="tabs.font" description="Font"
+    type="font" default="&#39;Roboto&#39;, sans-serif" value="400 14px
+    &#39;Roboto&#39;, sans-serif"/> <Variable name="tabs.color"
+    description="Text color" type="color" default="#4d4d4d" value="#48525c"/>
+    <Variable name="tabs.selected.color" description="Selected color"
+    type="color" default="#fff" value="#ffffff"/> <Variable
+    name="tabs.overflow.background.color" description="Popup background color"
+    type="color" default="$(posts.background.color)" value="#ffffff"/> <Variable
+    name="tabs.overflow.color" description="Popup text color" type="color"
+    default="#48525c" value="#48525c"/> <Variable
+    name="tabs.overflow.selected.color" description="Popup selected color"
+    type="color" default="#262d3d" value="#262d3d"/> <Variable
+    name="labels.background.color" description="Labels background color"
+    type="color" default="#fff" value="#ffffff"/> <Variable
+    name="blog.title.font" description="Blog title font" type="font"
+    default="&#39;Roboto&#39;, sans-serif" value="400 14px &#39;Roboto&#39;,
+    sans-serif"/> <Variable name="blog.title.color" description="Blog title
+    color" type="color" default="#fff" value="#ffffff"/> </Group> */ /* Variable
+    color */ :root { /* Font */ --fontX: 'Montserrat', sans-serif; --fontY:
+    'Lato', sans-serif; --fontZ: 'JetBrains Mono', monospace; --fontYa: 'Noto
+    Sans', sans-serif; /* basic font color */ --fontA: #262d3d; --fontB:
+    #48525c; --fontC: #767676; --fontD: #FFFFFF; /* basic background color */
+    --bodyA:#fafafc; --bodyB:#fefefe; --bodyC:#F7F9FD; --bodyD:#fffdfc; /* other
+    */ --headerH: 60px; --headerHi: -60px; --headerHm: 60px; --contentL:
+    #e6e6e6; --contentW: 1280px; --navW: 230px; --pageW: 780px; --sideW: 280px;
+    /* note */ --white: #FFFFFF; --black: #000000; /* spacing */ --spaceA: 0px;
+    --spaceB: 8px; --spaceC: 16px; --spaceD: 24px; --spaceE: 32px; --spaceF:
+    40px; --spaceG: 72px; /* corner radious */ --cornerA: 0px; --cornerB: 4px;
+    --cornerC: 8px; --cornerD: 12px; --cornerE: 25px; /* Component Color */
+    --borderA:1px solid #DCDFF1; --borderB: #f1f1f0; --borderC: #e4e3e1; /* Synx
+    */ --synxBg: #f6f6f6; --synxC: #2f3337; --synxOrange: #b75501; --synxBlue:
+    #015692; --synxGreen: #54790d; --synxRed: #f15a5a; --synxGray: #656e77;
+    --synxGold: #72621d; --synxPurple: #803378; --synxBd-color: #d2d3d7; /*
+    transition */ --trans-1: all 0.1s ease; --trans-2: all 0.2s ease; --trans-4:
+    all 0.4s ease; --transB: rgba(0, 0, 0, 0.05); --gray-50:#fafafa;
+    --gray-100:#f5f5f5; --gray-200:#e5e5e5; --gray-300:#d4d4d4;
+    --gray-400:#a3a3a3; --gray-500:#737373; --gray-600:#525252;
+    --gray-700:#404040; --gray-800:#262626; --gray-900:#171717;
+    --gray-950:#0a0a0a; --primary-50:#f0fdfa; --primary-100:#ccfbf1;
+    --primary-200:#99f6e4; --primary-300:#5eead4; --primary-400:#2dd4bf;
+    --primary-500:#14b8a6; --primary-600:#0d9488; --primary-700:#0f766e;
+    --primary-800:#115e59; --primary-900:#134e4a; --primary-950:#042f2e; } /*
+    Dark Mode */ :root .drk{ /* Theme */ --themeC: #fefefe; /* dark mode */
+    --darkT: #fefefe; --darkTa: #989b9f; --darkU: #1e1e1e; --darkB: #1e1e1e;
+    --darkBa: #2d2d30; --darkBs: #252526; } ]]></b:skin
+  >
+
+  <style>
+    /*<![CDATA[*/
+    /* Font Body */
+    @font-face {
+      font-family: "Lato";
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/lato/v24/S6u8w4BMUTPHjxsAXC-q.woff2)
+        format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Lato";
+      font-style: italic;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/lato/v24/S6u_w4BMUTPHjxsI5wq_Gwft.woff2)
+        format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXg.woff2)
+        format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVSwiPGQ.woff2)
+        format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* Font Heading */
+    @font-face {
+      font-family: "Montserrat";
+      font-style: italic;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq0N6WXh0pg.woff2)
+        format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM73w5aXo.woff2)
+        format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* Source Code Font */
+    @font-face {
+      font-family: "JetBrains Mono";
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8lqxTOlOV.woff2)
+        format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "JetBrains Mono";
+      font-style: italic;
+      font-weight: 300;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/jetbrainsmono/v18/tDba2o-flEEny0FZhsfKu5WU4xD-IQ-PuZJJXxfpAO_VfmOXmaI.woff2)
+        format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* Standar CSS */
+    ::selection {
+      color: #fff;
+      background: var(--primary-900);
+    }
+    *,
+    ::after,
+    ::before {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+      font-weight: 700;
+      font-family: var(--fontX);
+      color: var(--fontA);
+    }
+    h1 {
+      font-size: 1.9rem;
+    }
+    h2 {
+      font-size: 1.7rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+    h4 {
+      font-size: 1.4rem;
+    }
+    h5 {
+      font-size: 1.3rem;
+    }
+    h6 {
+      font-size: 1.2rem;
+    }
+    a {
+      color: var(--gray-700);
+      text-decoration: none;
+    }
+    a:hover {
+      color: var(--primary-800);
+      text-decoration: dashed;
+      text-decoration-color: var(--primary-800);
+      text-decoration-line: underline;
+      opacity: 0.8;
+      transition: opacity 0.1s;
+    }
+    table {
+      border-spacing: 0;
+    }
+    iframe {
+      max-width: 100%;
+      border: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input,
+    button,
+    select,
+    textarea {
+      font: inherit;
+      font-size: 100%;
+      color: inherit;
+      line-height: normal;
+    }
+    input::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
+    img {
+      display: block;
+      position: relative;
+      max-width: 100%;
+      height: auto;
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: var(--fontA);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1;
+    }
+    .hidden {
+      display: none;
+    }
+    .flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .noList {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .invisible {
+      visibility: hidden !important;
+    }
+    .clear {
+      width: 100%;
+      display: block;
+      margin: 0;
+      padding: 0;
+      float: none;
+      clear: both;
+    }
+
+    /* Main Element */
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      top: 0 !important;
+      margin: 0;
+      padding: 0 !important;
+      width: 100%;
+      font-family: var(--fontY);
+      font-size: 14px;
+      color: var(--fontA);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+      animation: opaCity 1s 0s;
+      -webkit-animation: opaCity 1s 0s;
+    }
+
+    /* NOS LIBRARY */
+    .flex-cols {
+      flex-direction: column;
+    }
+
+    /* For Box Show */
+    .bx-1 {
+      padding: 20px;
+      background: #fffdfc;
+      box-shadow: 0 5px 35px rgba(0, 0, 0, 0.07);
+      border-radius: 10px;
+      border: 1px solid #e6e6e6;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 1px solid var(--gray-600);
+      padding: 0.75rem 1.5rem;
+      margin: 0 auto;
+      width: full;
+    }
+
+    #header {
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header img {
+      width: 2rem;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .header h2 {
+      margin-left: 0.5rem;
+      text-transform: uppercase;
+      color: var(--gray-800);
+    }
+
+    .header ul li {
+      margin-left: 2rem;
+    }
+
+    /* Main Content */
+
+    .main {
+      padding: 0.5rem 1rem;
+      margin: 0 auto;
+      width: full;
+    }
+
+    #main {
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .main img {
+      width: 2rem;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .main h2 {
+      margin-left: 0.5rem;
+      text-transform: uppercase;
+      color: var(--gray-800);
+    }
+
+    .main ul li {
+      margin-left: 2rem;
+    }
+
+    /* Aside */
+
+    .aside {
+      padding: 0.5rem 1rem;
+      margin: 0 auto;
+      width: full;
+    }
+
+    #aside {
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .aside img {
+      width: 2rem;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .aside h2 {
+      margin-left: 0.5rem;
+      text-transform: uppercase;
+      color: var(--gray-800);
+    }
+
+    .aside ul li {
+      margin-left: 2rem;
+    }
+
+    .Profile {
+      display: flex;
+    }
+
+    .widget.title {
+      display: none;
+    }
+
+    .Profile img {
+      width: 5rem;
+      height: 5rem;
+      margin-right: 1rem;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--gray-600);
+      padding: 0.5rem 1rem;
+      width: full;
+    }
+
+    #footer {
+      display: grid;
+      gap: 4rem;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .footer ul {
+      margin: 0;
+      margin-top: 0.5rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer ul li {
+      margin-bottom: 0.5rem;
+      color: var(--gray-700);
+    }
+
+    #credit {
+      border-top: 1px solid var(--gray-600);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .footer .title {
+      font-family: var(--fontA);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.2rem;
+      color: var(--color9);
+    }
+
+    /* --- End --- */
+    /*]]>*/
+  </style>
+
+  <b:if cond='data:view.url != data:view.url params { amp: "1" }'>
+    <style>
+      /*<![CDATA[*/
+      /* Dark Mode */
+
+      /*]]>*/
+    </style>
+  </b:if>
+  <b:if cond="data:view.isSingleItem">
+    <style>
+      /*<![CDATA[*/
+      /*]]>*/
+    </style>
+  </b:if>
+  <b:if cond="data:view.isHomepage">
+    <!-- Code for the homepage -->
+    <style>
+      /*<![CDATA[*/
+
+      /*]]>*/
+    </style>
+  </b:if>
+  <b:if cond="data:view.isPost">
+    <style>
+      /*<![CDATA[*/
+
+      /*]]>*/
+    </style>
+    <script>
+      /*<![CDATA[*/
+
+      /*]]>*/
+    </script>
+  </b:if>
+
+  <!-- Code for mobile device views -->
+  <b:if cond="data:view.isMobile">
+    <style>
+      /*<![CDATA[*/
+      /* coming soon */
+      /*]]>*/
+    </style>
+  </b:if>
+
+  <!-- Code for Eror Mode -->
+  <b:if cond="data:view.isLayoutMode or data:view.isError">
+    <style>
+      /*<![CDATA[*/
+
+      /*]]>*/
+    </style>
+  </b:if>
+
+  <b:if cond="data:view.isSingleItem">
+    <style>
+      /*<![CDATA[*/
+
+      /*]]>*/
+    </style>
+  </b:if>
+  <b:defaultmarkups>
+    <!--[ Blogger defaultmarkups ]-->
+    <b:defaultmarkup type="Common">
+      <b:includable id="noContentPlaceholder">
+        <b:if cond="data:posts.empty">
+          <!--[ No posts messages ]-->
+          <div class="noPosts"><data:messages.noResultsFound />...</div>
+        </b:if>
+      </b:includable>
+    </b:defaultmarkup>
+  </b:defaultmarkups>
+  <script>
+    /*<![CDATA[*/
+    /* LIBRARY v1.2Lite */
+    function getid(id) {
+      return document.getElementById(id);
+    }
+    // Function to select elements by class name
+    function getclass(className) {
+      return document.getElementsByClassName(className);
+    }
+    // Function to select an element by CSS selector
+    function qSel(selector) {
+      return document.querySelector(selector);
+    }
+    // Function to select multiple elements by CSS selector
+    function qSell(selector) {
+      return document.querySelectorAll(selector);
+    }
+    /*]]>*/
+  </script>
+
+  <!--[ </head> close ]-->
+  &lt;!--<head />--&gt;&lt;/head&gt;
+
+  <!--[ <body> open ]-->
+  <body>
+    <!--[ Header section ]-->
+    <header class="header">
+      <!--[ Header content ]-->
+      <b:section id="header">
+        <b:widget
+          id="Header1"
+          locked="true"
+          title="Ninja Theme (Header)"
+          type="Header"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="displayUrl"
+              >https://blogger.googleusercontent.com/img/a/AVvXsEieBoIwU5UqjVCu14rLCQNySKQ66rVQqG5vsxum-R4HyKCwPDw235k6VCGpETU2PYOyyg0CspgQYsMMygQXWvjtZQn3aB6jYSWdZfbNPtSFlng05Y_LrGr3Nq6ZTEXrzjOBlCtx-TLZWlBShqybfSu62PuJkX8TyNhoIjgzcCDAZYJCbLR7KGCPfsHcmN0=s500</b:widget-setting
+            >
+            <b:widget-setting name="displayHeight">500</b:widget-setting>
+            <b:widget-setting name="sectionWidth">1017</b:widget-setting>
+            <b:widget-setting name="useImage">true</b:widget-setting>
+            <b:widget-setting name="shrinkToFit">false</b:widget-setting>
+            <b:widget-setting name="imagePlacement">BEHIND</b:widget-setting>
+            <b:widget-setting name="displayWidth">500</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main" var="this">
+            <div class="left flex">
+              <b:include name="image" />
+              <b:include name="title" />
+              <!-- <b:include name="description" /> -->
+            </div>
+          </b:includable>
+          <b:includable id="behindImageStyle">
+            <b:if cond="data:sourceUrl">
+              <b:include
+                cond="data:this.image"
+                data='{                    image: data:this.image,                    selector: ".header-widget"                  }'
+                name="responsiveImageStyle"
+              />
+              <style type="text/css">
+                .header-widget {
+                  background-position: <data:blog.locale.languageAlignment/>;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                }
+              </style>
+            </b:if>
+          </b:includable>
+          <b:includable id="description">
+            <p>
+              <data:this.description />
+            </p>
+          </b:includable>
+          <b:includable id="image">
+            <a expr:href="data:blog.homepageUrl">
+              <b:include
+                data="{image: data:image,altText: data:blog.title.escaped,originalWidth: data:width,originalHeight: data:height}"
+                name="responsiveImage"
+              />
+            </a>
+          </b:includable>
+          <b:includable id="title">
+            <h2>
+              <b:tag
+                cond="data:view.url != data:blog.homepageUrl"
+                expr:href="data:blog.homepageUrl"
+                name="a"
+              >
+                <data:title />
+              </b:tag>
+            </h2>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="PageList1"
+          locked="false"
+          title="Pages"
+          type="PageList"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="pageListJson"
+              ><![CDATA[{"3831938517770676374":{"href":"https://ninja-themes.blogspot.com/p/contact.html","position":1,"title":"Contact"},"5711694509481748829":{"href":"https://ninja-themes.blogspot.com/p/about-us.html","position":2,"title":"About"},"link0":{"href":"http://ninja-themes.blogspot.com/","position":0,"title":"Home"},"7798869004336638076":{"href":"https://ninja-themes.blogspot.com/p/licences.html","position":4,"title":"Licences"},"5612253243796424574":{"href":"https://ninja-themes.blogspot.com/p/download.html","position":3,"title":"Download"}}]]></b:widget-setting
+            >
+            <b:widget-setting name="homeTitle">Home</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main">
+            <b:include name="content" />
+          </b:includable>
+          <b:includable id="content">
+            <div class="widget-content">
+              <b:include name="pageList" />
+            </div>
+          </b:includable>
+          <b:includable id="overflowButton">
+            <b:include name="verticalMoreIcon" />
+          </b:includable>
+          <b:includable id="overflowablePageList">
+            <div class="overflowable-container">
+              <div class="overflowable-contents">
+                <div class="container">
+                  <b:with value="true" var="overflow">
+                    <b:with value='"tabs"' var="pageListClass">
+                      <b:include name="pageList" />
+                    </b:with>
+                  </b:with>
+                </div>
+              </div>
+              <div class="overflow-button hidden">
+                <b:include name="overflowButton" />
+              </div>
+            </div>
+          </b:includable>
+          <b:includable id="pageLink">
+            <li>
+              <b:class cond="data:overflow" name="overflowable-item" />
+              <b:class cond="data:link.isCurrentPage" name="selected" />
+
+              <a expr:href="data:link.href"><data:link.title /></a>
+            </li>
+          </b:includable>
+          <b:includable id="pageList">
+            <nav class="list">
+              <ul class="flex noList">
+                <b:class
+                  cond="data:pageListClass"
+                  expr:name="data:pageListClass"
+                />
+                <b:loop values="data:links" var="link">
+                  <b:include name="pageLink" />
+                </b:loop>
+              </ul>
+            </nav>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="TextList1"
+          locked="false"
+          title="List Items"
+          type="TextList"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="shownum">3</b:widget-setting>
+            <b:widget-setting name="sorting">NONE</b:widget-setting>
+            <b:widget-setting name="item-2">Mobile Menu</b:widget-setting>
+            <b:widget-setting name="item-1">Dark Mode</b:widget-setting>
+            <b:widget-setting name="item-0">Search</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main">
+            <b:include name="content" />
+          </b:includable>
+          <b:includable id="content">
+            <div class="list">
+              <ul class="flex noList">
+                <b:loop values="data:items" var="item">
+                  <li><data:item /></li>
+                </b:loop>
+              </ul>
+            </div>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </header>
+    <!--[ main section ]-->
+    <main class="main" id="main">
+      <!--[ main content ]-->
+      <b:section id="3">
+        <b:widget
+          id="FeaturedPost1"
+          locked="false"
+          title="Featured Post"
+          type="FeaturedPost"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="showSnippet">true</b:widget-setting>
+            <b:widget-setting name="showPostTitle">true</b:widget-setting>
+            <b:widget-setting name="postId">0</b:widget-setting>
+            <b:widget-setting name="showFirstImage">true</b:widget-setting>
+            <b:widget-setting name="useMostRecentPost">true</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main" var="this">
+            <b:include name="widget-title" />
+            <div class="widget-content">
+              <b:include name="snippetedPosts" />
+            </div>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="Blog1"
+          locked="true"
+          title="Blog Posts"
+          type="Blog"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="showDateHeader">false</b:widget-setting>
+            <b:widget-setting name="commentLabel">Comment</b:widget-setting>
+            <b:widget-setting name="style.textcolor">#ffffff</b:widget-setting>
+            <b:widget-setting name="showShareButtons">true</b:widget-setting>
+            <b:widget-setting name="authorLabel">Author</b:widget-setting>
+            <b:widget-setting name="showCommentLink">true</b:widget-setting>
+            <b:widget-setting name="style.urlcolor">#ffffff</b:widget-setting>
+            <b:widget-setting name="showAuthor">true</b:widget-setting>
+            <b:widget-setting name="style.linkcolor">#ffffff</b:widget-setting>
+            <b:widget-setting name="style.unittype"
+              >TextAndImage</b:widget-setting
+            >
+            <b:widget-setting name="style.bgcolor">#ffffff</b:widget-setting>
+            <b:widget-setting name="timestampLabel">On</b:widget-setting>
+            <b:widget-setting name="reactionsLabel" />
+            <b:widget-setting name="showAuthorProfile">true</b:widget-setting>
+            <b:widget-setting name="style.layout">1x1</b:widget-setting>
+            <b:widget-setting name="showLabels">true</b:widget-setting>
+            <b:widget-setting name="showLocation">false</b:widget-setting>
+            <b:widget-setting name="postLabelsLabel">in</b:widget-setting>
+            <b:widget-setting name="showTimestamp">true</b:widget-setting>
+            <b:widget-setting name="postsPerAd">1</b:widget-setting>
+            <b:widget-setting name="showBacklinks">false</b:widget-setting>
+            <b:widget-setting name="style.bordercolor"
+              >#ffffff</b:widget-setting
+            >
+            <b:widget-setting name="showInlineAds">false</b:widget-setting>
+            <b:widget-setting name="showReactions">false</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main" var="this">
+            <b:include cond="data:view.isMultipleItems" name="titlePost" />
+            <div class="blogPts">
+              <b:class cond="data:posts.empty" name="mty" />
+              <!--[ Fullpage condition ]-->
+              <b:class
+                cond="data:view.isSingleItem and data:posts"
+                name="fullP"
+              />
+              <b:include
+                cond="data:view.isSingleItem and data:posts"
+                name="post-singlePage"
+              />
+              <!--[ If no content found ]-->
+              <b:include name="noContentPlaceholder" />
+            </div>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </main>
+
+    <!--[ aside section ]-->
+    <aside class="aside">
+      <!--[ aside content ]-->
+      <b:section id="aside">
+        <b:widget
+          id="PopularPosts1"
+          locked="false"
+          title=""
+          type="PopularPosts"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="numItemsToShow">10</b:widget-setting>
+            <b:widget-setting name="showThumbnails">true</b:widget-setting>
+            <b:widget-setting name="showSnippets">true</b:widget-setting>
+            <b:widget-setting name="timeRange">LAST_YEAR</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main" var="this">
+            <b:include name="widget-title" />
+            <div class="widget-content">
+              <b:include name="snippetedPosts" />
+            </div>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="Label1"
+          locked="false"
+          title="Labels"
+          type="Label"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="sorting">ALPHA</b:widget-setting>
+            <b:widget-setting name="display">LIST</b:widget-setting>
+            <b:widget-setting name="selectedLabelsList" />
+            <b:widget-setting name="showType">ALL</b:widget-setting>
+            <b:widget-setting name="showFreqNumbers">false</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main" var="this">
+            <b:include name="widget-title" />
+            <b:include name="content" />
+          </b:includable>
+          <b:includable id="cloud">
+            <b:loop values="data:labels" var="label">
+              <span class="label-size">
+                <b:class expr:name='"label-size-" + data:label.cssSize' />
+                <a class="label-name" expr:href="data:label.url">
+                  <data:label.name />
+                  <b:if cond="data:this.showFreqNumbers">
+                    <span class="label-count"><data:label.count /></span>
+                  </b:if>
+                </a>
+              </span>
+            </b:loop>
+          </b:includable>
+          <b:includable id="content">
+            <div class="widget-content">
+              <b:class
+                expr:name='data:this.display + "-label-widget-content"'
+              />
+              <b:include cond='data:this.display == "list"' name="list" />
+              <b:include cond='data:this.display == "cloud"' name="cloud" />
+            </div>
+          </b:includable>
+          <b:includable id="list">
+            <ul>
+              <b:loop values="data:labels" var="label">
+                <li>
+                  <a class="label-name" expr:href="data:label.url">
+                    <data:label.name />
+                    <b:if cond="data:this.showFreqNumbers">
+                      <span class="label-count"><data:label.count /></span>
+                    </b:if>
+                  </a>
+                </li>
+              </b:loop>
+            </ul>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="Profile1"
+          locked="false"
+          title="About Me"
+          type="Profile"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="showaboutme">true</b:widget-setting>
+            <b:widget-setting name="showlocation">true</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main" var="this">
+            <b:include name="widget-title" />
+            <b:include name="content" />
+          </b:includable>
+          <b:includable id="authorProfileImage">
+            <img
+              class="profile-img"
+              expr:alt="data:messages.myPhoto"
+              expr:height="data:authorPhoto.height"
+              expr:src="data:authorPhoto.image"
+              expr:width="data:authorPhoto.width"
+            />
+          </b:includable>
+          <b:includable id="content">
+            <b:if cond="data:team">
+              <div class="widget-content team">
+                <b:include name="teamProfile" />
+              </div>
+              <b:else />
+              <div class="widget-content individual">
+                <b:include name="userProfile" />
+              </div>
+            </b:if>
+          </b:includable>
+          <b:includable id="defaultProfileImage">
+            <div class="default-avatar" />
+          </b:includable>
+          <b:includable id="profileImage">
+            <b:if cond="data:authorPhoto.image">
+              <b:include name="authorProfileImage" />
+              <b:else />
+              <b:include name="defaultProfileImage" />
+            </b:if>
+          </b:includable>
+          <b:includable id="teamProfile">
+            <ul>
+              <b:loop values="data:authors" var="author">
+                <li>
+                  <div class="team-member">
+                    <b:include data="author" name="teamProfileLink" />
+                  </div>
+                </li>
+              </b:loop>
+            </ul>
+          </b:includable>
+          <b:includable id="teamProfileLink">
+            <a
+              class="profile-link g-profile"
+              expr:href="data:userUrl"
+              rel="nofollow"
+            >
+              <b:include name="profileImage" />
+              <span class="profile-name"><data:display-name /></span>
+            </a>
+          </b:includable>
+          <b:includable id="userLocation">
+            <dd class="profile-data location"><data:location /></dd>
+          </b:includable>
+          <b:includable id="userProfile">
+            <b:include name="userProfileImage" />
+            <b:include name="userProfileInfo" />
+          </b:includable>
+          <b:includable id="userProfileData">
+            <dt class="profile-data">
+              <a
+                class="profile-link g-profile"
+                expr:href="data:userUrl"
+                rel="author nofollow"
+              >
+                <data:displayname />
+              </a>
+            </dt>
+          </b:includable>
+          <b:includable id="userProfileImage">
+            <a expr:href="data:userUrl" rel="nofollow">
+              <b:include name="profileImage" />
+            </a>
+          </b:includable>
+          <b:includable id="userProfileInfo">
+            <div class="profile-info">
+              <dl class="profile-datablock">
+                <b:class
+                  cond='data:showlocation and data:location != ""'
+                  name="has-location"
+                />
+
+                <b:include name="userProfileData" />
+                <b:include
+                  cond='data:showlocation and data:location != ""'
+                  name="userLocation"
+                />
+                <b:include cond='data:aboutme != ""' name="userProfileText" />
+              </dl>
+              <b:include name="viewProfileLink" />
+            </div>
+          </b:includable>
+          <b:includable id="userProfileText">
+            <dd class="profile-textblock">
+              <data:aboutme />
+            </dd>
+          </b:includable>
+          <b:includable id="viewProfileLink">
+            <a
+              class="profile-link"
+              expr:href="data:userUrl"
+              rel="author nofollow"
+            >
+              <data:messages.viewMyCompleteProfile />
+            </a>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </aside>
+    <!--[ footer section ]-->
+    <footer class="footer">
+      <!--[ footer content ]-->
+      <b:section id="footer">
+        <b:widget
+          id="HTML1"
+          locked="false"
+          title="About Us"
+          type="HTML"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="content"
+              >&lt;a href=&quot;/&quot; aria-label=&quot;Go home&quot;
+              title=&quot;Company&quot; class=&quot;inline-flex
+              items-center&quot;&gt; &lt;svg class=&quot;w-8
+              text-deep-purple-accent-400&quot; viewbox=&quot;0 0 24 24&quot;
+              stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot;
+              stroke-linecap=&quot;round&quot; stroke-miterlimit=&quot;10&quot;
+              stroke=&quot;currentColor&quot; fill=&quot;none&quot;&gt; &lt;rect
+              x=&quot;3&quot; y=&quot;1&quot; width=&quot;7&quot;
+              height=&quot;12&quot;&gt;&lt;/rect&gt; &lt;rect x=&quot;3&quot;
+              y=&quot;17&quot; width=&quot;7&quot;
+              height=&quot;6&quot;&gt;&lt;/rect&gt; &lt;rect x=&quot;14&quot;
+              y=&quot;1&quot; width=&quot;7&quot;
+              height=&quot;6&quot;&gt;&lt;/rect&gt; &lt;rect x=&quot;14&quot;
+              y=&quot;11&quot; width=&quot;7&quot;
+              height=&quot;12&quot;&gt;&lt;/rect&gt; &lt;/svg&gt; &lt;span
+              class=&quot;ml-2 text-xl font-bold tracking-wide text-gray-800
+              uppercase&quot;&gt;Company&lt;/span&gt; &lt;/a&gt; &lt;div
+              class=&quot;mt-4 lg:max-w-sm&quot;&gt; &lt;p class=&quot;text-sm
+              text-gray-800&quot;&gt; Sed ut perspiciatis unde omnis iste natus
+              error sit voluptatem accusantium doloremque laudantium, totam rem
+              aperiam. &lt;/p&gt; &lt;/div&gt;</b:widget-setting
+            >
+          </b:widget-settings>
+          <b:includable id="main">
+            <b:include name="widget-title" />
+            <div class="widget-content">
+              <data:content />
+            </div>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="LinkList5"
+          locked="true"
+          title="Compony"
+          type="LinkList"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="link-3">https://</b:widget-setting>
+            <b:widget-setting name="sorting">NONE</b:widget-setting>
+            <b:widget-setting name="link-4">https://</b:widget-setting>
+            <b:widget-setting name="text-1">Contact</b:widget-setting>
+            <b:widget-setting name="link-1">https://</b:widget-setting>
+            <b:widget-setting name="text-0">About</b:widget-setting>
+            <b:widget-setting name="link-2">https://</b:widget-setting>
+            <b:widget-setting name="text-3">Terms</b:widget-setting>
+            <b:widget-setting name="link-0">https://</b:widget-setting>
+            <b:widget-setting name="text-2">Privacy</b:widget-setting>
+            <b:widget-setting name="text-4">Licences</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main">
+            <b:include name="widget-title" />
+            <b:include name="content" />
+          </b:includable>
+          <b:includable id="content">
+            <nav class="list">
+              <ul class="noList">
+                <b:loop values="data:links" var="link">
+                  <li>
+                    <a expr:href="data:link.target"><data:link.name /></a>
+                  </li>
+                </b:loop>
+              </ul>
+            </nav>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="LinkList3"
+          locked="true"
+          title="Compony"
+          type="LinkList"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="link-3">https://</b:widget-setting>
+            <b:widget-setting name="sorting">NONE</b:widget-setting>
+            <b:widget-setting name="link-4">https://</b:widget-setting>
+            <b:widget-setting name="text-1">Contact</b:widget-setting>
+            <b:widget-setting name="link-1">https://</b:widget-setting>
+            <b:widget-setting name="text-0">About</b:widget-setting>
+            <b:widget-setting name="link-2">https://</b:widget-setting>
+            <b:widget-setting name="text-3">Terms</b:widget-setting>
+            <b:widget-setting name="link-0">https://</b:widget-setting>
+            <b:widget-setting name="text-2">Privacy</b:widget-setting>
+            <b:widget-setting name="text-4">Licences</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main">
+            <b:include name="widget-title" />
+            <b:include name="content" />
+          </b:includable>
+          <b:includable id="content">
+            <nav class="list">
+              <ul class="noList">
+                <b:loop values="data:links" var="link">
+                  <li>
+                    <a expr:href="data:link.target"><data:link.name /></a>
+                  </li>
+                </b:loop>
+              </ul>
+            </nav>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="LinkList2"
+          locked="false"
+          title="Resources"
+          type="LinkList"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="shownum">5</b:widget-setting>
+            <b:widget-setting name="link-3">https://</b:widget-setting>
+            <b:widget-setting name="sorting">NONE</b:widget-setting>
+            <b:widget-setting name="link-4">https://</b:widget-setting>
+            <b:widget-setting name="text-1">Teoropy</b:widget-setting>
+            <b:widget-setting name="link-1">https://</b:widget-setting>
+            <b:widget-setting name="text-0">Download</b:widget-setting>
+            <b:widget-setting name="link-2">https://</b:widget-setting>
+            <b:widget-setting name="text-3">Pages</b:widget-setting>
+            <b:widget-setting name="link-0">https://</b:widget-setting>
+            <b:widget-setting name="text-2">components</b:widget-setting>
+            <b:widget-setting name="text-4">Guid</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main">
+            <b:include name="widget-title" />
+            <b:include name="content" />
+          </b:includable>
+          <b:includable id="content">
+            <nav class="list">
+              <ul class="noList">
+                <b:loop values="data:links" var="link">
+                  <li>
+                    <a expr:href="data:link.target"><data:link.name /></a>
+                  </li>
+                </b:loop>
+              </ul>
+            </nav>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="Subscribe1"
+          locked="false"
+          title="Newslatter"
+          type="Subscribe"
+          version="2"
+          visible="true"
+        >
+          <b:includable id="main">
+            <b:include name="widget-title" />
+            <b:include name="content" />
+          </b:includable>
+          <b:includable id="content">
+            <div class="widget-content">
+              <b:include data="feeds" name="feeds" />
+              <div style="clear: both" />
+            </div>
+          </b:includable>
+          <b:includable id="feeds" var="feeds">
+            <b:loop values="data:feeds" var="feed">
+              <div
+                expr:class='"subscribe-wrapper subscribe-type-" + data:feed.type'
+              >
+                <div
+                  expr:class='"subscribe expanded subscribe-type-" + data:feed.type'
+                  expr:id='"SW_READER_LIST_" + data:widgetId + data:feed.type'
+                  style="display: none"
+                >
+                  <div class="top">
+                    <span
+                      class="inner"
+                      expr:onclick='"return(_SW_toggleReaderList(event, \"" + data:widgetId +data:feed.type + "\"));"'
+                    >
+                      <img
+                        class="subscribe-dropdown-arrow"
+                        expr:src="data:arrowDropdownImg"
+                      />
+                      <img
+                        align="absmiddle"
+                        alt=""
+                        border="0"
+                        class="feed-icon"
+                        expr:src="data:feedIconImg"
+                      />
+                      <data:feed.title />
+                    </span>
+
+                    <div class="feed-reader-links">
+                      <a
+                        class="feed-reader-link"
+                        expr:href='"https://www.netvibes.com/subscribe.php?url=" + data:feed.encodedUrl'
+                        target="_blank"
+                      >
+                        <img
+                          expr:src='data:imagePathBase + "subscribe-netvibes.png"'
+                        />
+                      </a>
+                      <a
+                        class="feed-reader-link"
+                        expr:href='"https://add.my.yahoo.com/content?url=" + data:feed.encodedUrl'
+                        target="_blank"
+                      >
+                        <img
+                          expr:src='data:imagePathBase + "subscribe-yahoo.png"'
+                        />
+                      </a>
+                      <a
+                        class="feed-reader-link"
+                        expr:href="data:feed.url"
+                        target="_blank"
+                      >
+                        <img
+                          align="absmiddle"
+                          class="feed-icon"
+                          expr:src="data:feedIconImg"
+                        />
+                        Atom
+                      </a>
+                    </div>
+                  </div>
+                  <div class="bottom" />
+                </div>
+
+                <div
+                  class="subscribe"
+                  expr:id='"SW_READER_LIST_CLOSED_" + data:widgetId +data:feed.type'
+                  expr:onclick='"return(_SW_toggleReaderList(event, \"" + data:widgetId +data:feed.type + "\"));"'
+                >
+                  <div class="top">
+                    <span class="inner">
+                      <img
+                        class="subscribe-dropdown-arrow"
+                        expr:src="data:arrowDropdownImg"
+                      />
+                      <span
+                        expr:onclick='"return(_SW_toggleReaderList(event, \"" + data:widgetId +data:feed.type + "\"));"'
+                      >
+                        <img
+                          align="absmiddle"
+                          alt=""
+                          border="0"
+                          class="feed-icon"
+                          expr:src="data:feedIconImg"
+                        />
+                        <data:feed.title />
+                      </span>
+                    </span>
+                  </div>
+                  <div class="bottom" />
+                </div>
+              </div>
+            </b:loop>
+          </b:includable>
+        </b:widget>
+      </b:section>
+      <b:section id="credit">
+        <b:widget
+          id="HTML2"
+          locked="false"
+          title="Creadit"
+          type="HTML"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="content"
+              >&lt;p class=&quot;mt-4 text-sm text-gray-800&quot;&gt; ©
+              Copyright 2020 Lorem Inc. All rights reserved.
+              &lt;/p&gt;</b:widget-setting
+            >
+          </b:widget-settings>
+          <b:includable id="main">
+            <div class="widget-content">
+              <data:content />
+            </div>
+          </b:includable>
+        </b:widget>
+        <b:widget
+          id="LinkList4"
+          locked="true"
+          title="Compony"
+          type="LinkList"
+          version="2"
+          visible="true"
+        >
+          <b:widget-settings>
+            <b:widget-setting name="sorting">NONE</b:widget-setting>
+            <b:widget-setting name="text-1">Github</b:widget-setting>
+            <b:widget-setting name="link-1">https://</b:widget-setting>
+            <b:widget-setting name="text-0">Youtube</b:widget-setting>
+            <b:widget-setting name="link-2">https://</b:widget-setting>
+            <b:widget-setting name="link-0">https://</b:widget-setting>
+            <b:widget-setting name="text-2">Twitter</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id="main">
+            <b:include name="content" />
+          </b:includable>
+          <b:includable id="content">
+            <nav>
+              <ul class="flex noList">
+                <b:loop values="data:links" var="link">
+                  <li>
+                    <a expr:href="data:link.target"><data:link.name /></a>
+                  </li>
+                </b:loop>
+              </ul>
+            </nav>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </footer>
+
+    <!--[ additional javascript ]-->
+    <script>
+      /*<![CDATA[*/
+
+      /*]]>*/
+    </script>
+    <!-- Main Js -->
+    <!--[ </body> close ]-->
+    &lt;!--
+  </body>
+  --&gt;&lt;/body&gt;
+</html>
